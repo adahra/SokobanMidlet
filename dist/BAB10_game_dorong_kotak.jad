@@ -1,0 +1,8 @@
+MIDlet-1: SokobanGame,,org.pemroggame.kelompok3.sokoban.Sokoban
+MIDlet-Jar-Size: 19769
+MIDlet-Jar-URL: BAB10_game_dorong_kotak.jar
+MIDlet-Name: Sokoban
+MIDlet-Vendor: Vendor
+MIDlet-Version: 1.0
+MicroEdition-Configuration: CLDC-1.1
+MicroEdition-Profile: MIDP-2.1
