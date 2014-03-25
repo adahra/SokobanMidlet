@@ -62,7 +62,7 @@ public final class Papan {
     }
 
     /** Method yang digunakan untuk menggerakan semua obyek dalam game
-     * @param inputan berupa integer
+     * @param move inputan berupa integer
      * @return
      */
     public int move(int move) {
@@ -81,7 +81,7 @@ public final class Papan {
 
     /** Method yang digunakan untuk menggerakan kotak yang ada pada game
      * @param index yang ada pada kotak
-     * @param 
+     * @param move
      * @return
      */
     private int movePacket(int index, int move) {
@@ -108,7 +108,7 @@ public final class Papan {
 	
 	/** Method yang digunakan untuk menyimpan pergerakan dari semua obyek
 	 * yang ada pada game
-	 * @param
+	 * @param move
 	 */
     private void saveMove(int move) {
         if (nmoves >= moves.length) {
@@ -147,9 +147,9 @@ public final class Papan {
 	
 	/** Method yang digunakan untuk memindahkan target/obyek pada game di
 	 * posisi yang sudah ditentukan berapa x dan berapa y
-	 * @param nilai x
-	 * @param nilai y
-	 * @param batas maksimal dari nilai x dan y
+	 * @param x nilai x
+	 * @param y nilai y
+	 * @param max batas maksimal dari nilai x dan y
 	 * @return
 	 */
     public int runTo(int x, int y, int max) {
@@ -176,7 +176,7 @@ public final class Papan {
 
             int pathlen = pathmap[pusher];
             int pathmin = pathlen - max;
-	    int dir = -1;
+			int dir = -1;
             for (pathlen--; pathlen >= pathmin; pathlen--) {
                 if (pathmap[pusher - 1] == pathlen) {
 		    dir = LEFT;
@@ -205,8 +205,8 @@ public final class Papan {
 
 	/** Method yang digunakan untuk mencari target atau posisi kotak dan 
 	 * soko
-	 * @param
-	 * @param
+	 * @param t 
+	 * @param pathlen
 	 */
     private void findTarget(int t, byte pathlen) {
         if (array[t] > STORE)
@@ -227,8 +227,8 @@ public final class Papan {
     }
 
     /** Method yang digunakan untuk mengambil nilai x dan y
-     * @param nilai x
-     * @param nilai y
+     * @param x nilai x
+     * @param y nilai y
      * @return
      */
     public byte get(int x, int y) {
@@ -240,17 +240,17 @@ public final class Papan {
     }
 
     /** Method yang digunakan untuk mengatur nilai x dan y
-     * @param
-     * @param
-     * @param
+     * @param x
+     * @param y
+     * @param value
      */
     private void set(int x, int y, byte value) {
         array[index(x, y)] = value;
     }
 
     /** Digunakan untuk mengatur nilai index x dan y
-     * @param nilai x
-     * @param nilai y
+     * @param x nilai x
+     * @param y nilai y
      * @return
      */
     private int index(int x, int y) {
@@ -272,7 +272,7 @@ public final class Papan {
     }
 
     /** Digunakan untuk mengatur index offset
-     * @param 
+     * @param move
      * @return
      */
     private int indexOffset(int move) {
@@ -291,8 +291,8 @@ public final class Papan {
 
     /** Method yang digunakan untuk membaca level dan digunakan untuk 
      * menerjemahkan array level kedalam grafik
-     * @param
-     * @param
+     * @param is
+     * @param l
      */
     public void read(java.io.InputStream is, int l) {
         final int W = 20;
@@ -401,7 +401,7 @@ public final class Papan {
     }
 
     /** Method yang digunakan untuk mengecek posisi soko dari nilai x
-     * @param
+     * @param dx
      * @return
      */
     private int dx(int dir) {
@@ -413,7 +413,7 @@ public final class Papan {
     }
 
     /** Method yang digunakan untuk mengecek posisi soko dari nilai y
-     * @param
+     * @param dy
      * @return
      */
     private int dy(int dir) {
