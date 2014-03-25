@@ -11,10 +11,10 @@ public class Waktu extends TimerTask {
     /** obyek yang digunakan untuk meletakkan semua obyek game */
     Kanvas canvas;
     /** Konstruktor dalam kelas Waktu, 
-     * @param digunakan untuk menyimpan nilai posisi dalam canvas
-     * @param digunakan untuk menyimpan nilai posisi papan
-     * @param digunakan untuk menyimpan nilai x
-     * @param digunakan untuk menyimpan nilai y
+     * @param c digunakan untuk menyimpan nilai posisi dalam canvas
+     * @param b digunakan untuk menyimpan nilai posisi papan
+     * @param x digunakan untuk menyimpan nilai x
+     * @param y digunakan untuk menyimpan nilai y
      */
     Waktu(Kanvas c, Papan b, int x, int y) {
 		// memberi nilai canvas dengan nilai yang diberikan pada c
