@@ -6,9 +6,9 @@ The player pushes boxes around a maze. The objective is to place all
 boxes in designated locations. 
 
 Sokoban adalah game komputer classic. Dibuat pada tahun 1980 oleh 
-Hiroyuki Imabayashi. Dalam bahasa Jepang sokoban memiliki arti  
-penjaga gudang. Pemain mendorong kotak melalui rintangan. Tujuan dari
-game ini adalah menempatkan semua kotak pada lokasi yang sudah didesain
+Hiroyuki Imabayashi. Dalam bahasa Jepang sokoban memiliki arti penjaga 
+gudang. Pemain mendorong kotak melalui rintangan. Tujuan dari game ini 
+adalah menempatkan semua kotak pada lokasi yang sudah didesain 
 sedemikian rupa. 
 
 nb:
