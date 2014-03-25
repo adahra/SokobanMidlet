@@ -1,5 +1,9 @@
 package org.pemroggame.kelompok3.sokoban;
 
+/** Kelas papan yang digunakan untuk membuat latar belakang game, untuk 
+ * membentuk level baru, meletakkan player, pengaturan pergerakan soko
+ * dan pergerakan kotak, mendeteksi key yang di inputkan oleh user
+ */
 public final class Papan {
     private int level;
     private byte[] array;
@@ -26,7 +30,7 @@ public final class Papan {
     public static final byte WALL = 4;	
     public static final byte PUSHER = 8;
 
-    
+    /** Konstruktor dari kelas Papan */
     public Papan() {
         moves = new byte[200];
         screen0();
@@ -57,7 +61,10 @@ public final class Papan {
         pusher = index(1, 1);
     }
 
-    
+    /** Method yang digunakan untuk menggerakan semua obyek dalam game
+     * @param inputan berupa integer
+     * @return
+     */
     public int move(int move) {
         int obj = pusher + indexOffset(move);
         if ((array[obj] & WALL) != 0)
@@ -69,10 +76,14 @@ public final class Papan {
 
         pusher = obj;
         saveMove(m);
-	return m;
+		return m;
     }
 
-    
+    /** Method yang digunakan untuk menggerakan kotak yang ada pada game
+     * @param index yang ada pada kotak
+     * @param 
+     * @return
+     */
     private int movePacket(int index, int move) {
         if ((array[index] & PACKET) == 0)
             return move;
@@ -94,7 +105,11 @@ public final class Papan {
         npushes++;
         return move + MOVEPACKET;
     }
-
+	
+	/** Method yang digunakan untuk menyimpan pergerakan dari semua obyek
+	 * yang ada pada game
+	 * @param
+	 */
     private void saveMove(int move) {
         if (nmoves >= moves.length) {
             byte[] n = new byte[moves.length + 50];
@@ -104,7 +119,9 @@ public final class Papan {
         moves[nmoves++] = (byte)move;
     }
 
-
+	/** Method yang digunakan untuk membatalkan pergerakan yang lalu 
+	 * @return
+	 */
     public int undoMove() {
         if (nmoves <= 0)
             return -1;
@@ -117,14 +134,24 @@ public final class Papan {
             movePacket(pusher + indexOffset(move), rev);
         }
         pusher = back;
-	return move;
+		return move;
     }
 
-    
+    /** Method yang digunakan untuk mengecek apakah semua sudah terpecah
+     * kan atau belum
+     * @return
+     */
     public boolean solved() {
         return packets == stored;
     }
-
+	
+	/** Method yang digunakan untuk memindahkan target/obyek pada game di
+	 * posisi yang sudah ditentukan berapa x dan berapa y
+	 * @param nilai x
+	 * @param nilai y
+	 * @param batas maksimal dari nilai x dan y
+	 * @return
+	 */
     public int runTo(int x, int y, int max) {
         int target = index(x, y);
         if (target < 0 || target >= array.length)
@@ -176,6 +203,11 @@ public final class Papan {
         }
     }
 
+	/** Method yang digunakan untuk mencari target atau posisi kotak dan 
+	 * soko
+	 * @param
+	 * @param
+	 */
     private void findTarget(int t, byte pathlen) {
         if (array[t] > STORE)
             return;
@@ -194,7 +226,11 @@ public final class Papan {
         findTarget(t + width, pathlen);
     }
 
-    
+    /** Method yang digunakan untuk mengambil nilai x dan y
+     * @param nilai x
+     * @param nilai y
+     * @return
+     */
     public byte get(int x, int y) {
         int offset = index(x, y);
         if (offset == pusher)
@@ -203,12 +239,20 @@ public final class Papan {
             return array[offset];
     }
 
-    
+    /** Method yang digunakan untuk mengatur nilai x dan y
+     * @param
+     * @param
+     * @param
+     */
     private void set(int x, int y, byte value) {
         array[index(x, y)] = value;
     }
 
-    
+    /** Digunakan untuk mengatur nilai index x dan y
+     * @param nilai x
+     * @param nilai y
+     * @return
+     */
     private int index(int x, int y) {
         if (x < 0 || x >= width ||
         y < 0 || y >= height)
@@ -217,14 +261,20 @@ public final class Papan {
         return y * width + x;
     }
 
-    
+    /** Digunakan untuk mengetahui lokasi dari posisi tujuan kotak yang 
+     * mau digeser
+     * @return
+     */
     public int getPusherLocation() {
-	int x = pusher % width;
-	int y = pusher / width;
-	return (y << 16) + x;
+		int x = pusher % width;
+		int y = pusher / width;
+		return (y << 16) + x;
     }
 
-    
+    /** Digunakan untuk mengatur index offset
+     * @param 
+     * @return
+     */
     private int indexOffset(int move) {
         switch (move & 3) {
             case LEFT:
@@ -239,7 +289,11 @@ public final class Papan {
         return 0;
     }
 
-    
+    /** Method yang digunakan untuk membaca level dan digunakan untuk 
+     * menerjemahkan array level kedalam grafik
+     * @param
+     * @param
+     */
     public void read(java.io.InputStream is, int l) {
         final int W = 20;
         final int H = 20;
@@ -318,27 +372,38 @@ public final class Papan {
         }
     }
 
-    
+    /** Digunakan untuk mengambil lebar canvas/level
+     * @return lebar
+     */
     public int getWidth() {
         return width;
     }
 
-    
+    /** Digunakan untuk mengambil tinggi canvas/level
+     * @return tinggi
+     */
     public int getHeight() {
         return height;
     }
 
-    
+    /** Digunakan untuk mengetahui berapa jumlah gerakan
+     * @return gerakan
+     */
     public int getMoves() {
         return nmoves;
     }
 
-    
+    /** Digunakan untuk mengetahui/mendapatkan keadaan lokasi tujuan
+     * @return
+     */
     public int getPushes() {
         return npushes;
     }
 
-    
+    /** Method yang digunakan untuk mengecek posisi soko dari nilai x
+     * @param
+     * @return
+     */
     private int dx(int dir) {
         if (dir == LEFT)
             return -1;
@@ -347,7 +412,10 @@ public final class Papan {
         return 0;
     }
 
-    
+    /** Method yang digunakan untuk mengecek posisi soko dari nilai y
+     * @param
+     * @return
+     */
     private int dy(int dir) {
         if (dir == UP)
             return -1;
