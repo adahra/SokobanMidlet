@@ -74,7 +74,7 @@ class Nilai {
 	}
 	
 	/** Method yang digunakan untuk mengatur level sekarang	
-	 * @param masukan level yang akan di tuju
+	 * @param level level yang akan di tuju
 	 * @return 
 	 */
 	boolean setLevel(int level) {
@@ -113,7 +113,7 @@ class Nilai {
 	
 	/** Method yang digunakan untuk membaca nilai yang sudah pernah 
 	 * di simpan sebelumnya, dan menulisnya lagi dengan nilai yang baru
-	 * @param 
+	 * @param level 
 	 * @return
 	 */	
 	boolean readScore(int level) {
@@ -143,8 +143,8 @@ class Nilai {
 
 	/** Method yang digunakan untuk mengatur nilai/skor level yang sudah
 	 * dilalui saat ini
-	 * @param berapa kali mendorong kotak
-	 * @param berapa gerakan player memecahkan level
+	 * @param pushes berapa kali mendorong kotak
+	 * @param moves gerakan player memecahkan level
 	 * @return
 	 */
     boolean setLevelScore(int pushes, int moves) {
@@ -168,6 +168,8 @@ class Nilai {
 
 	/** Method yang digunakan untuk mengambil nilai integer dari level 
 	 * yang ada
+         * @param buf 
+         * @param offset
 	 * @return
 	 */
     private int getInt(byte[] buf, int offset) {
@@ -178,6 +180,9 @@ class Nilai {
     }
 
     /** Method yang digunakan untuk mengatur nilai integer pada level
+     * @buf
+     * @offset
+     * @value
      * @return
      */
     private void putInt(byte[] buf, int offset, int value) {

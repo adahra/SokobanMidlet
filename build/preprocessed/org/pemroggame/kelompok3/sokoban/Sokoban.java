@@ -55,12 +55,21 @@ public class Sokoban extends MIDlet implements CommandListener {
     }
     public void pauseApp() {
     }
+    
+    /* Method yang dipanggil ketika aplikasi di hancurkan/ditutup oleh pengguna
+    * @param unconditional 
+    */
     public void destroyApp(boolean unconditional) {
 	tampil.setCurrent(null);
 	KANPAS.destroy();
 	if (SKOR != null)
 	    SKOR.close();
     }
+    
+    /* Method yang digunakan untuk menangani tombol
+    * @param c 
+    * @param s 
+    */
     public void commandAction(Command c, Displayable s) {
 	if (c == undoCommand) {
 	    KANPAS.undoMove();
