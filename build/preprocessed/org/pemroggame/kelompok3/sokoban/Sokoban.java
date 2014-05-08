@@ -9,7 +9,6 @@ import javax.microedition.lcdui.List;
 import javax.microedition.lcdui.Screen;
 import javax.microedition.midlet.MIDlet;
 
-
 public class Sokoban extends MIDlet implements CommandListener {
     Display tampil;
     private final Kanvas KANPAS;
@@ -53,12 +52,11 @@ public class Sokoban extends MIDlet implements CommandListener {
 
 	tampil.setCurrent(KANPAS);
     }
+    
     public void pauseApp() {
+        
     }
     
-    /* Method yang dipanggil ketika aplikasi di hancurkan/ditutup oleh pengguna
-    * @param unconditional 
-    */
     public void destroyApp(boolean unconditional) {
 	tampil.setCurrent(null);
 	KANPAS.destroy();
@@ -66,10 +64,6 @@ public class Sokoban extends MIDlet implements CommandListener {
 	    SKOR.close();
     }
     
-    /* Method yang digunakan untuk menangani tombol
-    * @param c 
-    * @param s 
-    */
     public void commandAction(Command c, Displayable s) {
 	if (c == undoCommand) {
 	    KANPAS.undoMove();
@@ -81,7 +75,6 @@ public class Sokoban extends MIDlet implements CommandListener {
 	    LAYAR_LEVEL.setCommandListener(this);
 	    tampil.setCurrent(LAYAR_LEVEL);
 	} else if (c == okCommand && s == LAYAR_LEVEL) {
-
 	    if (!KANPAS.gotoLevel()) {
 		ALERT.setString("ERROR");
 		tampil.setCurrent(ALERT, KANPAS);
@@ -112,6 +105,7 @@ public class Sokoban extends MIDlet implements CommandListener {
 	    } else {
 		tampil.setCurrent(KANPAS);
 	    }
+            
             if (s == KANPAS) {
                 KANPAS.repaint();
             }
@@ -122,14 +116,13 @@ public class Sokoban extends MIDlet implements CommandListener {
 		tampil.setCurrent(ALERT, KANPAS);
 	    } else {
 		tampil.setCurrent(KANPAS);
-	    }
+            }
+            
             if (s == KANPAS) {
                 KANPAS.repaint();
             }
-
 	} else {
 	    System.out.println("ERROR " + c);
 	}
     }
-
 }
