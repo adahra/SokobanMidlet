@@ -49,7 +49,6 @@ public class Sokoban extends MIDlet implements CommandListener {
 	KANPAS.addCommand(nextCommand);
 	KANPAS.addCommand(prevCommand);
 	KANPAS.setCommandListener(this);
-
 	tampil.setCurrent(KANPAS);
     }
     
@@ -99,8 +98,7 @@ public class Sokoban extends MIDlet implements CommandListener {
 	    KANPAS.nextLevel(1);
 	} else if (c == nextCommand) {
 	    if (!KANPAS.nextLevel(1)) {
-		ALERT.setString("ERROR " +
-				(KANPAS.getLevel() + 1));
+		ALERT.setString("ERROR " + (KANPAS.getLevel() + 1));
 		tampil.setCurrent(ALERT, KANPAS);
 	    } else {
 		tampil.setCurrent(KANPAS);
@@ -111,8 +109,7 @@ public class Sokoban extends MIDlet implements CommandListener {
             }
 	} else if (c == prevCommand) {
 	    if (!KANPAS.nextLevel(-1)) {
-		ALERT.setString("ERROR " +
-				(KANPAS.getLevel() - 1));
+		ALERT.setString("ERROR " + (KANPAS.getLevel() - 1));
 		tampil.setCurrent(ALERT, KANPAS);
 	    } else {
 		tampil.setCurrent(KANPAS);
